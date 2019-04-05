@@ -1,0 +1,30 @@
+<project name="comp">
+
+    <property name="source.dir"     value="./src/cal"/>
+    <property name="result.javaclasses.dir"   value="./output/classes"/>
+    <property name="jar.dir"     value="./output/jar"/>
+    <property name="jar.file"     value="./output/jar/Project.jar"/>
+
+    <target name="comp">
+        <mkdir dir="${result.javaclasses.dir}"/>
+        <javac srcdir="${source.dir}" includeantruntime="false" debug="true" destdir="${result.javaclasses.dir}">
+    	</javac>
+    </target>
+
+    <target name="jar" depends="comp">
+        <mkdir dir="${jar.dir}"/>
+        <jar destfile="${jar.file}">
+        	<fileset dir="${result.javaclasses.dir}">
+        	</fileset>
+        </jar>
+    </target>
+	
+		<path id="NecessaryLibraries">
+        <pathelement location="./UsedLibraries/junit-4.12.jar"/>
+        <!--matcher-->
+        <pathelement location="./UsedLibraries/hamcrest-core-1.3.jar"/>
+        <!--<pathelement location="./UsedLibraries/jacocoant.jar"/>-->
+    </path>
+    
+
+</project>
